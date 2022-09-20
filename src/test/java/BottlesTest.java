@@ -63,12 +63,12 @@ public class BottlesTest {
         assertEquals(expected, new Bottle().verses(99, 98));
     }
 
-//    @Test
-//    public void test_verse_6() {
-//        String expected = "1 six-pack of beer on the wall," +
-//                "1 six-pack of beer.\n" +
-//                "Take one down and pass it around, " +
-//                "5 bottles of beer on the wall.\n";
-//        assertEquals(expected, new com.ylliu.Bottle().verse(6));
-//    }
+    @Test
+    public void test_verse_6() {
+        String expected = "1 six-pack of beer on the wall," +
+                "1 six-pack of beer.\n" +
+                "Take one down and pass it around, " +
+                "5 bottles of beer on the wall.\n";
+        assertEquals(expected, new com.ylliu.Bottle().verse(6));
+    }
 }

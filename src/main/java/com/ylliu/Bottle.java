@@ -6,38 +6,61 @@ import java.util.stream.IntStream;
 
 public class Bottle {
     public String verse(int number) {
-        String result;
-        switch (number) {
-            case 0:
-                result = "No more bottles of beer on the wall," +
-                        "no more bottles of beer.\n" +
-                        "Go to the store and buy some more, " +
-                        "99 bottles of beer on the wall.\n";
-                break;
-            case 1:
-                result = "1 bottle of beer on the wall," +
-                        "1 bottle of beer.\n" +
-                        "Take it down and pass it around, " +
-                        "no more bottles of beer on the wall.\n";
-                break;
-            case 2:
-                result = "2 bottles of beer on the wall," +
-                        "2 bottles of beer.\n" +
-                        "Take one down and pass it around, " +
-                        "1 bottle of beer on the wall.\n";
-                break;
-            default:
-                result = number + " bottles of beer on the wall," +
-                        number + " bottles of beer.\n" +
-                        "Take one down and pass it around, " +
-                        (number - 1) + " bottles of beer on the wall.\n";
+        return capitalize(quantity(number) + " " + container(number) + " of beer on the wall,") +
+                quantity(number) + " " + container(number) + " of beer.\n" +
+                action(number) +
+                quantity(next(number)) + " " + container(next(number)) + " of beer on the wall.\n";
+    }
 
+    private int next(int number) {
+        if (number == 0) {
+            return 99;
         }
-        return result;
+        return number - 1;
+    }
+
+    private String action(int number) {
+        if (number == 0) {
+            return "Go to the store and buy some more, ";
+        }
+        return "Take " + pronoun(number) + " down and pass it around, ";
+    }
+
+    private String quantity(int number) {
+        if (number == 0) {
+            return "no more";
+        }
+        if (number == 6) {
+            return "1";
+        }
+        return String.valueOf(number);
+    }
+
+    private String pronoun(int number) {
+        if (number == 1) {
+            return "it";
+        }
+        return "one";
+    }
+
+    private String container(int number) {
+        if (number == 1) {
+            return "bottle";
+        }
+        if (number == 6) {
+            return "six-pack";
+        }
+        return "bottles";
     }
 
     public String verses(int starting, int ending) {
         return IntStream.rangeClosed(ending, starting).boxed().sorted(Collections.reverseOrder()).
                 map(this::verse).collect(Collectors.joining("\n"));
     }
+
+    public static String capitalize(String str) {
+        if (str == null || str.length() <= 1) return str;
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
 }
