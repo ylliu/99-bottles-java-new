@@ -1,7 +1,8 @@
+package com.ylliu;
+
 import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Bottle {
     public String verse(int number) {

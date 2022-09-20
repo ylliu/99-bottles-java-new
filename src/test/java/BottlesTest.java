@@ -1,3 +1,4 @@
+import com.ylliu.Bottle;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,6 +69,6 @@ public class BottlesTest {
 //                "1 six-pack of beer.\n" +
 //                "Take one down and pass it around, " +
 //                "5 bottles of beer on the wall.\n";
-//        assertEquals(expected, new Bottle().verse(6));
+//        assertEquals(expected, new com.ylliu.Bottle().verse(6));
 //    }
 }
